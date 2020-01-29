@@ -3,6 +3,7 @@
     <head>
         <title> addFractions Page!</title>
         <link rel="stylesheet" href="/css/styles.css">
+        <meta charset="utf-8"/>
         <script>
 
             var steps = []
@@ -72,8 +73,7 @@
     <body>
         <div class="about-content">
             {{>header}}
-            <form>
-                <label><h3> Inputs : [<h4 id="inputs"> </h4>] </h3></label> <br> <br>
+                <label> <h3> Inputs : [<h4 id="inputs"> </h4>] </h3></label> <br> <br>
             
                 <label><h3> Fraction 1: </h3><input id="numerator1" placeholder="Numerator"> /
                 <input id="denominator1" placeholder="Denominator">
@@ -81,10 +81,9 @@
                 <h3> Fraction 2: </h3><input id="numerator2" placeholder="Numerator"> /
                 <input id="denominator2" placeholder="Denominator"> </label>
             
-                <button> Add </button> <br/> <br/>
+                <button onclick="start_exec()"> Add </button> <br/> <br/>
             
                 <label><h3> Sum =  </h3><h3 id="sum" style="color: coral;"></h3></label>
-            </form>
 
             <form>
                 <label>
@@ -93,6 +92,7 @@
             </form>
             
             <p> <script> 
+                function start_exec()   {
                 var n1 = new fraction.input(0, 1)
                 n1 = new fraction.input(document.getElementById("numerator1").value, document.getElementById("denominator1").value)
                 
@@ -112,6 +112,7 @@
                 
                 document.getElementById("inputs").innerHTML = temp
                 initSteps()
+                }
             </script>  </p>
         </div>
         {{>footer}}

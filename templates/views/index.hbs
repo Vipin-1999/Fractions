@@ -39,7 +39,7 @@
         <label> <h3>Enter a fraction :</h3><input id="numerator" placeholder="Numerator"> / 
         <input id="denominator" placeholder="Denominator"> </label>
 
-        <button type="submit"> Submit </button> <br/>
+        <button onclick="start_exec()"> Submit </button> <br/>
 
         <label> <h3> Simplified Fraction : </h3><p id="sum"></p> </label>
     </div>
@@ -51,9 +51,11 @@
     </form>
 
     <script>
+        function start_exec()   {
         steps.push("Step " + counter++ + ". The entered fractions are " + document.getElementById("numerator").value + '/' + document.getElementById("denominator").value + "<br>")
         lowest(document.getElementById("numerator").value, document.getElementById("denominator").value)
         initSteps()
+        }
     </script>
 
     {{>footer}}
