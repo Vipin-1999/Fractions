@@ -33,7 +33,6 @@ app.get('/addFractions', (req,res)  => {
 app.get('/addFractionsArray', (req,res) =>  {
     res.render('addFractionsArray', {
         title : 'Add Multiple Fractions',
-        fraction,
         name : 'Stark'
     })
 })
