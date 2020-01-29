@@ -1,5 +1,3 @@
-const fraction = require('../public/js/fraction')
-
 const express = require('express')
 const path = require('path')
 const hbs = require('hbs')
@@ -20,22 +18,24 @@ app.use(express.static(publicDirectoryPath))
 
 app.get('/', (req, res)  =>  {
     res.render('index', {
-        title : 'Fractions app',
-        fraction,
+        title : 'Simplify Fraction',
         name : 'Stark'
     })
 })
 
 app.get('/addFractions', (req,res)  => {
     res.render('addFractions', {
-        title : 'Add Fractions',
-        fraction,
+        title : 'Add Two Fractions',
         name : 'Stark'
     })
 })
 
-app.get('/fractions', (req,res) =>  {
-    res.render('fractions')
+app.get('/addFractionsArray', (req,res) =>  {
+    res.render('addFractionsArray', {
+        title : 'Add Multiple Fractions',
+        fraction,
+        name : 'Stark'
+    })
 })
 
 app.listen(port, () => {
