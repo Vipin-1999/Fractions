@@ -58,7 +58,7 @@
                 sum = addFraction(sum, array[n-1])
                 if(n==1)    {
                     sum = lowest(sum.denominator, sum.numerator)
-                    steps.push("<br> Step " + counter++ + ". The sum of the two fractions is " + sum.numerator + '/' + sum.denominator)
+                    steps.push("<br> Step " + counter++ + ". The sum of the two fractions is " + sum.numerator + '/' + sum.denominator + "<br>")
                     document.getElementById("sum").innerHTML = sum.numerator + '/' + sum.denominator
                 }
                 addFractionArray(array, n-1, sum)
@@ -75,11 +75,11 @@
             {{>header}}
                 <label> <h3> Inputs : [<h4 id="inputs"> </h4>] </h3></label> <br> <br>
             
-                <label><h3> Fraction 1: </h3><input id="numerator1" placeholder="Numerator"> /
-                <input id="denominator1" placeholder="Denominator">
+                <label><h3> Fraction 1: </h3><input id="numerator1" placeholder="Numerator" value="0"> /
+                <input id="denominator1" placeholder="Denominator" value="1">
 
-                <h3> Fraction 2: </h3><input id="numerator2" placeholder="Numerator"> /
-                <input id="denominator2" placeholder="Denominator"> </label>
+                <h3> Fraction 2: </h3><input id="numerator2" placeholder="Numerator" value="0"> /
+                <input id="denominator2" placeholder="Denominator" value="1"> </label>
             
                 <button onclick="start_exec()"> Add </button> <br/> <br/>
             
@@ -93,25 +93,25 @@
             
             <p> <script> 
                 function start_exec()   {
-                var n1 = new fraction.input(0, 1)
-                n1 = new fraction.input(document.getElementById("numerator1").value, document.getElementById("denominator1").value)
+                    var n1 = new fraction.input(0, 1)
+                    n1 = new fraction.input(document.getElementById("numerator1").value, document.getElementById("denominator1").value)
                 
-                var n2 = new fraction.input(0, 1)
-                n2 = new fraction.input(document.getElementById("numerator2").value, document.getElementById("denominator2").value)
+                    var n2 = new fraction.input(0, 1)
+                    n2 = new fraction.input(document.getElementById("numerator2").value, document.getElementById("denominator2").value)
 
-                var inp = [n1, n2]
-                var temp = []
-                var sum = new fraction.input(0, 1)
-                var i
+                    var inp = [n1, n2]
+                    var temp = []
+                    var sum = new fraction.input(0, 1)
+                    var i
 
-                steps.push("<br> Step " + counter++ + ". The entered fractions are " + n1.numerator + '/' + n1.denominator + ', ' + n2.numerator + '/' + n2.denominator)
-                addFractionArray(inp, inp.length, sum)
+                    steps.push("<br> Step " + counter++ + ". The entered fractions are " + n1.numerator + '/' + n1.denominator + ', ' + n2.numerator + '/' + n2.denominator)
+                    addFractionArray(inp, inp.length, sum)
                 
-                for(i = 0; i < inp.length; i++)
-                    temp[i] = inp[i].numerator + '/' + inp[i].denominator 
+                    for(i = 0; i < inp.length; i++)
+                        temp[i] = inp[i].numerator + '/' + inp[i].denominator 
                 
-                document.getElementById("inputs").innerHTML = temp
-                initSteps()
+                    document.getElementById("inputs").innerHTML = temp
+                    initSteps()
                 }
             </script>  </p>
         </div>
