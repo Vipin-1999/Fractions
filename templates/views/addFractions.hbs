@@ -38,16 +38,16 @@
                 var n3 = new fraction.input(0, 1)
                 n3.denominator = gcd(n1.denominator, n2.denominator)
                 
-                steps.push("Step " + counter++ + ". Find the LCM of the factors of the two denominators : (" + n1.denominator + ', ' + n2.denominator + ') = ' + n3.denominator + "<br>")
+                steps.push("<br> Step " + counter++ + ". Find the LCM of the factors of the two denominators : (" + n1.denominator + ', ' + n2.denominator + ') = ' + n3.denominator)
                 
                 n3.denominator = (n1.denominator * n2.denominator)/n3.denominator
-                steps.push("Step " + counter++ + ". Find the LCM denominator : (" + n1.denominator + ', ' + n2.denominator + ') = ' + n3.denominator + "<br>")
+                steps.push("<br> Step " + counter++ + ". Find the LCM denominator : (" + n1.denominator + ', ' + n2.denominator + ') = ' + n3.denominator)
                 
                 n3.numerator = (n1.numerator) * (n3.denominator/n1.denominator) + (n2.numerator) * (n3.denominator/n2.denominator)
-                steps.push("Step " + counter++ + ". Convert the two numerators according to the respective denominators and add them : (" + n1.numerator + ' * ' + n3.denominator + ' / ' + n1.denominator + ') + (' + n2.numerator  + ' * ' + n3.denominator + ' / ' + n2.denominator + ")<br>")
+                steps.push("<br> Step " + counter++ + ". Convert the two numerators according to the respective denominators and add them : (" + n1.numerator + ' * ' + n3.denominator + ' / ' + n1.denominator + ') + (' + n2.numerator  + ' * ' + n3.denominator + ' / ' + n2.denominator + ")")
                 
                 n3 = lowest(n3.denominator, n3.numerator)
-                steps.push("Step " + counter++ + ". To simplify the obtained fraction, divide both numerator and denominator by a common factor : (" + (n3.numerator*comfac) + ' / ' + comfac + ') = ' + n3.numerator + " and (" + (n3.denominator*comfac) + ' / ' + comfac + ') = ' + n3.denominator + "<br>")
+                steps.push("<br> Step " + counter++ + ". To simplify the obtained fraction, divide both numerator and denominator by a common factor : (" + (n3.numerator*comfac) + ' / ' + comfac + ') = ' + n3.numerator + " and (" + (n3.denominator*comfac) + ' / ' + comfac + ') = ' + n3.denominator)
                 
                 return n3
             }  
@@ -58,7 +58,7 @@
                 sum = addFraction(sum, array[n-1])
                 if(n==1)    {
                     sum = lowest(sum.denominator, sum.numerator)
-                    steps.push("Step " + counter++ + ". The sum of the two fractions is " + sum.numerator + '/' + sum.denominator + "<br>")
+                    steps.push("<br> Step " + counter++ + ". The sum of the two fractions is " + sum.numerator + '/' + sum.denominator)
                     document.getElementById("sum").innerHTML = sum.numerator + '/' + sum.denominator
                 }
                 addFractionArray(array, n-1, sum)
@@ -104,7 +104,7 @@
                 var sum = new fraction.input(0, 1)
                 var i
 
-                steps.push("Step " + counter++ + ". The entered fractions are " + n1.numerator + '/' + n1.denominator + ', ' + n2.numerator + '/' + n2.denominator + "<br>")
+                steps.push("<br> Step " + counter++ + ". The entered fractions are " + n1.numerator + '/' + n1.denominator + ', ' + n2.numerator + '/' + n2.denominator)
                 addFractionArray(inp, inp.length, sum)
                 
                 for(i = 0; i < inp.length; i++)

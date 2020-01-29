@@ -19,11 +19,11 @@
         const lowest = function(den3, num3)  {  
             const common_factor = gcd(num3, den3)
             comfac = common_factor
-            steps.push("Step " + counter++ + ". Find the common factor of numerator and denominator : (" + den3 + ', ' + num3 + ") = " + common_factor + "<br>")
+            steps.push("<br> Step " + counter++ + ". Find the common factor of numerator and denominator : (" + den3 + ', ' + num3 + ") = " + common_factor)
             den3 = den3/common_factor  
             num3 = num3/common_factor
-            steps.push("Step " + counter++ + ". Divide both numerator and denominator by the common factor : (" + (den3 * comfac) + ' / ' + comfac + ") = " + den3 + " and (" + (num3 * comfac) + ' / ' + comfac + ") = " + num3 + "<br>")
-            steps.push("Step " + counter++ + ". The simplified fraction is " + den3 + '/' + num3 + "<br>")
+            steps.push("<br> Step " + counter++ + ". Divide both numerator and denominator by the common factor : (" + (den3 * comfac) + ' / ' + comfac + ") = " + den3 + " and (" + (num3 * comfac) + ' / ' + comfac + ") = " + num3)
+            steps.push("<br> Step " + counter++ + ". The simplified fraction is " + den3 + '/' + num3)
             document.getElementById("sum").innerHTML = den3 + '/' + num3
         }
 
@@ -52,7 +52,7 @@
 
     <script>
         function start_exec()   {
-        steps.push("Step " + counter++ + ". The entered fractions are " + document.getElementById("numerator").value + '/' + document.getElementById("denominator").value + "<br>")
+        steps.push("<br> Step " + counter++ + ". The entered fractions are " + document.getElementById("numerator").value + '/' + document.getElementById("denominator").value)
         lowest(document.getElementById("numerator").value, document.getElementById("denominator").value)
         initSteps()
         }
