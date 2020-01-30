@@ -76,11 +76,11 @@
             <label> <h3 style="display: inline;"> Fractions entered : [<h4 id="inputs" style="display: inline; color: #6c757d;">
             </h4> </h3> <h3 style="display: inline;">&ensp;]</h3> </label> <br> <br>
             
-            <label><h3>Fraction 1: <input id="numerator1" placeholder="Numerator" value="0"> /
-            <input id="denominator1" placeholder="Denominator" value="1"> &ensp;
+            <label><h3>Fraction 1: <input id="numerator1" placeholder="Numerator"> /
+            <input id="denominator1" placeholder="Denominator"> &ensp;
 
-            Fraction 2: <input id="numerator2" placeholder="Numerator" value="0"> /
-            <input id="denominator2" placeholder="Denominator" value="1"> </h3></label>
+            Fraction 2: <input id="numerator2" placeholder="Numerator"> /
+            <input id="denominator2" placeholder="Denominator"> </h3></label>
         
             <button onclick="start_exec()"> Add </button> <br/> <br/>
             
@@ -97,8 +97,8 @@
                     if(document.getElementById("denominator1").value == 0 || document.getElementById("denominator2").value == 0)  {
                         alert("Denominator cannnot be zero!")
                     }
-                    else if(typeof(document.getElementById("denominator1").value) != 'number')   {
-                        alert("Character entered!")
+                    else if(document.getElementById("numerator").value.length == 0 || document.getElementById("denominator").value.length == 0)   {
+                        alert("Invalid Character entered!")
                     }
                     else    {
                         var n1 = new fraction.input(0, 1)

@@ -53,9 +53,19 @@
 
     <script>
         function start_exec()   {
-            steps.push("<br> Step " + counter++ + ". The entered fractions are " + document.getElementById("numerator").value + '/' + document.getElementById("denominator").value)
-            lowest(document.getElementById("numerator").value, document.getElementById("denominator").value)
-            initSteps()
+            if(document.getElementById("numerator").value.length == 0 || document.getElementById("denominator").value.length == 0) {
+                alert("Invalid character entered!")
+                return false
+            }
+            else if(document.getElementById("denominator").value == 0)  {
+                alert("Denominator cannnot be zero!")
+                return false
+            }
+            else    {
+                steps.push("<br> Step " + counter++ + ". The entered fractions are " + document.getElementById("numerator").value + '/' + document.getElementById("denominator").value)
+                lowest(document.getElementById("numerator").value, document.getElementById("denominator").value)
+                initSteps()
+            }
         }
     </script>
     </div>
