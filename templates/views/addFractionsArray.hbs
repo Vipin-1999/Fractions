@@ -1,15 +1,127 @@
 <!DOCTYPE html>
 <html> 
     <head>
-        <title> AddfractionsArray page! </title>
+        <title> Add Multiple Fractions!</title>
         <link rel="stylesheet" href="/css/styles.css">
+        <meta charset="utf-8"/>
+        <script>
+
+            var steps = []
+            var comfac
+            var counter = 1
+            var sum1
+            var inp = []
+
+
+            var fraction = {
+                numerator : Number,
+                denominator : Number,
+                input: function(a, b)   {
+                    this.numerator = a,
+                    this.denominator = b
+                }
+            }
+            
+            function gcd(a, b) {
+                if (a === 0)
+                    return b
+                return gcd(b%a, a)
+            }
+            
+            const lowest = function(den3, num3)  {  
+                const common_factor = gcd(num3, den3)
+                comfac = common_factor
+                den3 = den3/common_factor  
+                num3 = num3/common_factor
+                var ret = new fraction.input(num3, den3)
+                return ret
+            }
+            
+            const addFraction = function(n1, n2)     {
+                var n3 = new fraction.input(0, 1)
+                n3.denominator = gcd(n1.denominator, n2.denominator)
+                
+                steps.push("<br> Step " + counter++ + ". Find the LCM of the factors of the two denominators : (" + n1.denominator + ', ' + n2.denominator + ') = ' + n3.denominator)
+                
+                n3.denominator = (n1.denominator * n2.denominator)/n3.denominator
+                steps.push("<br> Step " + counter++ + ". Find the LCM denominator : (" + n1.denominator + ', ' + n2.denominator + ') = ' + n3.denominator)
+                
+                n3.numerator = (n1.numerator) * (n3.denominator/n1.denominator) + (n2.numerator) * (n3.denominator/n2.denominator)
+                steps.push("<br> Step " + counter++ + ". Convert the two numerators according to the respective denominators and add them : (" + n1.numerator + ' * ' + n3.denominator + ' / ' + n1.denominator + ') + (' + n2.numerator  + ' * ' + n3.denominator + ' / ' + n2.denominator + ")")
+                
+                n3 = lowest(n3.denominator, n3.numerator)
+                steps.push("<br> Step " + counter++ + ". To simplify the obtained fraction, divide both numerator and denominator by a common factor : (" + (n3.numerator*comfac) + ' / ' + comfac + ') = ' + n3.numerator + " and (" + (n3.denominator*comfac) + ' / ' + comfac + ') = ' + n3.denominator)
+                
+                return n3
+            }  
+            
+            const addFractionArray = function(array, n, sum)     {
+                if(n == 0)
+                    return 0
+                sum = addFraction(sum, array[n-1])
+                if(n==1)    {
+                    sum = lowest(sum.denominator, sum.numerator)
+                    steps.push("<br> Step " + counter++ + ". The sum of the two fractions is " + sum.numerator + '/' + sum.denominator + "<br>")
+                    document.getElementById("sum").innerHTML = sum.numerator + '/' + sum.denominator
+                }
+                addFractionArray(array, n-1, sum)
+            }
+
+            const initSteps = function()    {
+                document.getElementById("steps").innerHTML = steps
+            }
+        </script>    
     </head>
 
     <body>
-        <div class="help-content">
+        <div class="main-content" style="align: left;"> 
             {{>header}}
-        </div>
+            <label> <h3 style="display: inline;"> Fractions entered : [<h4 id="inputs" style="display: inline; color: #6c757d;">
+            </h4> </h3> <h3 style="display: inline;">&ensp;]</h3> </label> <br> <br>
+            
+            <label><h3> Enter the Fraction : <input type="number" id="numerator" placeholder="Numerator"> /
+            <input type="number" min="1" id="denominator" placeholder="Denominator"> &ensp; </h3></label>
+            
+            <button onclick="start_exec()"> Add </button> <br/> <br/>
+            
+            <label><h3 style="display: inline;"> Sum =  </h3><h3 id="sum" style="color: coral; display: inline;"></h3></label>
+            <h3>Steps: </h3>
 
+            <form class="form-control">
+                <label>
+                    <p id="steps"></p>
+                </label>
+            </form>
+            
+            <p> <script> 
+                function start_exec()   {
+                    if(document.getElementById("numerator").value.length == 0 || document.getElementById("denominator").value.length == 0) {
+                        alert("Invalid character entered!")
+                        return false
+                    }
+                    else if(document.getElementById("denominator").value == 0)  {
+                        alert("Denominator cannnot be zero!")
+                        return false
+                    }
+                    else    {
+                    var n1 = new fraction.input(0, 1)
+                    n1 = new fraction.input(document.getElementById("numerator").value, document.getElementById("denominator").value)
+                    sum = new fraction.input(0, 1)
+                    var temp = []
+                    inp.push(n1)
+                    var i
+
+                    steps.push("<br> Step " + counter++ + ". The entered fractions are [" + n1.numerator + '/' + n1.denominator + ']')
+                    addFractionArray(inp, inp.length, sum)
+                
+                    for(i = 0   ; i < inp.length; i++)
+                        temp[i] = ' ' + inp[i].numerator + '/' + inp[i].denominator                
+                    document.getElementById("inputs").innerHTML = temp
+                    initSteps()
+                    }
+                }
+            </script>  </p>
+        </div>
         {{>footer}}
     </body>
-</html> 
+</html>
