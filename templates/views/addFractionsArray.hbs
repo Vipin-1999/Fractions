@@ -80,7 +80,7 @@
             </h4> </h3> <h3 style="display: inline;">&ensp;]</h3> </label> <br> <br>
             
             <label><h3> Enter the Fraction : <input id="numerator" placeholder="Numerator"> /
-            <input min="1" id="denominator" placeholder="Denominator"> &ensp; </h3></label>
+            <input id="denominator" placeholder="Denominator"> &ensp; </h3></label>
             
             <button onclick="start_exec()"> Add </button> <br/> <br/>
             
@@ -95,13 +95,11 @@
             
             <p> <script> 
                 function start_exec()   {
-                    if(document.getElementById("numerator").value.length == 0 || document.getElementById("denominator").value.length == 0) {
+                    if(isNaN(document.getElementById("numerator").value) || isNaN(document.getElementById("denominator").value)) {
                         alert("Invalid character entered!")
-                        return false
                     }
                     else if(document.getElementById("denominator").value == 0)  {
                         alert("Denominator cannnot be zero!")
-                        return false
                     }
                     else    {
                     var n1 = new fraction.input(0, 1)

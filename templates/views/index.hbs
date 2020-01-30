@@ -53,7 +53,7 @@
 
     <script>
         function start_exec()   {
-            if(document.getElementById("numerator").value.length == 0 || document.getElementById("denominator").value.length == 0) {
+            if(isNaN(document.getElementById("numerator").value) || isNaN(document.getElementById("denominator").value)) {
                 alert("Invalid character entered!")
                 return false
             }
